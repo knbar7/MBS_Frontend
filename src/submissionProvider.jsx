@@ -40,6 +40,8 @@ export const SubmissionProvider = ({children}) => {
         }
     
         handleSubmitGeneric(formContent, keys, formData);
+
+        e.target.reset();
     }
 
     const handleSubmitThreeToOne = (e) => {
@@ -59,6 +61,8 @@ export const SubmissionProvider = ({children}) => {
         }
     
         handleSubmitGeneric(formContent, keys, formData);
+
+        e.target.reset();
     }    
 
     const handleChange = (e, selection) => {

@@ -1,11 +1,9 @@
-import './index.css'
-import { useState } from 'react';
-import { handleSubmitGeneric } from './api/genericFunctions';
-import { IntentionForm } from './intentionForm';
-import { ThreeToOneForm } from './threeToOneForm';
+import { useState, useContext, createContext } from "react"
+import { handleSubmitGeneric } from "./api/genericFunctions";
 
-export const ClientProfile = () => {
+const SubmissionContext = createContext({});
 
+export const SubmissionProvider = ({children}) => {
     const [formContent, setFormContent] = useState('intention');
     const [intention, setIntention] = useState('');
     const [cue1, setCue1] = useState('');
@@ -97,30 +95,59 @@ export const ClientProfile = () => {
     }
 
     return(
-        <div className="client-content">
-            {
-                formContent === 'intention' ?
-                <IntentionForm />
-                :
-                <ThreeToOneForm />
-            }
-            {
-                formContent === 'intention' ?
-                <div className="daily-items-container">
-                    <h2>Intention</h2>
-                    <p className='description'>Intention is the focus for the day. This should be phrased as a cue itself and should be the overarching objective of the day</p>
-                    <h2>Cues</h2>
-                    <p className='description'>Cues are actionable 2 to 3 word phrases that you will use throughout the day to direct your actions in order to accomplish your intention. </p>
-                </div>
-                :
-                <div className="daily-items-container">
-                    <h2>Three-to-One</h2>
-                    <h3>What worked?</h3>
-                    <p className='description'>Find 3. Look through your day to find the outcomes that you liked. Think what went well? Then ask yourself what did I do that caused that</p>
-                    <h3>To improve</h3>
-                    <p className='description'>Find 1. Look through your day and pick one thing that you would like to improve. This should be a cue as well. Ask yourself, what would I like to do or try that I did not.</p>
-                </div>
-            }
-        </div>
+        <SubmissionContext.Provider value={{
+            formContent,
+            setFormContent,
+            intention,
+            setIntention,
+            cue1,
+            setCue1,
+            cue2,
+            setCue2,
+            cue3,
+            setCue3,
+            worked1,
+            setWorked1,
+            worked2,
+            setWorked2,
+            worked3,
+            setWorked3,
+            improve1,
+            setImprove1,
+            handleClick,
+            handleSubmitIntention,
+            handleSubmitThreeToOne,
+            handleChange,
+        }}>
+        {children}
+        </SubmissionContext.Provider>
     )
+}
+
+export const useSubmission = () => {
+    const context = useContext(SubmissionContext);
+    return{
+        formContent: context.formContent,
+        setFormContent: context.setFormContent,
+        intention: context.intention,
+        setIntention: context.setIntention,
+        cue1: context.cue1,
+        setCue1: context.setCue1,
+        cue2: context.cue2,
+        setCue2: context.setCue2,
+        cue3: context.cue3,
+        setCue3: context.setCue3,
+        worked1: context.worked1,
+        setWorked1: context.setWorked1,
+        worked2: context.worked2,
+        setWorked2: context.setWorked2,
+        worked3: context.worked3,
+        setWorked3: context.setWorked3,
+        improve1: context.improve1,
+        setImprove1: context.setImprove1,
+        handleClick: context.handleClick,
+        handleSubmitIntention: context.handleSubmitIntention,
+        handleSubmitThreeToOne: context.handleSubmitThreeToOne,
+        handleChange: context.handleChange,
+    }
 }

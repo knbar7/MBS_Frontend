@@ -21,7 +21,7 @@ export const SubmissionHistory = () => {
                 setThreeToOneData(data);
             });
         }
-    }, [user.id, formContent]);
+    }, [user.id, formContent, intentionData, threeToOneData]);
 
     return(
         <div className="data-container">

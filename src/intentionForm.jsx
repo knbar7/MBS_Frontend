@@ -1,7 +1,9 @@
+import { useAuth } from "./authProvider";
 import { useSubmission } from "./submissionProvider"
 
 export const IntentionForm = () => {
     const { handleChange, handleClick, handleSubmitIntention } = useSubmission();
+    const { user } = useAuth();
 
     return(
         <div className="daily-items-container">
@@ -15,7 +17,7 @@ export const IntentionForm = () => {
             </div>
             <h2>Intention</h2>
             <br />
-            <form onSubmit={handleSubmitIntention} className="input-form">
+            <form onSubmit={(e) => handleSubmitIntention(e, user.id)} className="input-form">
                 <input type="text" name="intention" placeholder='Intention' onChange={(e) => handleChange(e, 'intention')} />
                 <input type="text" name="cue1" placeholder='Cue 1' onChange={(e) => handleChange(e, 'cue1')} />
                 <input type="text" name="cue2" placeholder='Cue 2' onChange={(e) => handleChange(e, 'cue2')} />

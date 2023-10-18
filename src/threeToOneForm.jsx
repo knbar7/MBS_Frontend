@@ -1,7 +1,9 @@
+import { useAuth } from "./authProvider";
 import { useSubmission } from "./submissionProvider"
 
 export const ThreeToOneForm = () => {
     const { handleChange, handleClick, handleSubmitThreeToOne } = useSubmission();
+    const { user } = useAuth();
 
     return(
         <div className="daily-items-container">
@@ -15,7 +17,7 @@ export const ThreeToOneForm = () => {
                     </div>
                     <h2>Three to One</h2>
                     <br />
-                    <form onSubmit={handleSubmitThreeToOne} className="input-form">
+                    <form onSubmit={(e) => handleSubmitThreeToOne(e, user.id)} className="input-form">
                         <input type="text" name="worked1" placeholder='Worked 1' onChange={(e) => handleChange(e, 'worked1')} />
                         <input type="text" name="worked2" placeholder='Worked 2' onChange={(e) => handleChange(e, 'worked2')} />
                         <input type="text" name="worked3" placeholder='Worked 3' onChange={(e) => handleChange(e, 'worked3')} />

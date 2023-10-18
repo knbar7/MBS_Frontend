@@ -29,12 +29,30 @@ export const handleLogIn = async (email, password) => {
     }
   };
   
+// Function to handle data fetches for specific users
+export const getData = async (dataType, userId) => {
+    try {
+      const response = await axios.get(API_CONFIG.baseUrl + `/${dataType}/author/${userId}`);
+  
+      if (response.status === 200) {
+        const submissions = response.data;
 
+        return submissions;
+      } else {
+        console.error('Fetch failed');
+      }
+    } catch (error) {
+      // Handle network or other errors
+      console.error('An error occurred:', error);
+    }
+  };
 
 
 // Generic post function
 export const handleSubmitGeneric = async (endpoint, keys, formData) => {
     const data = {};
+
+    console.log(formData)
 
     for (let key of keys) {
         // Set the value from formData for each key

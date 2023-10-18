@@ -5,6 +5,7 @@ const SubmissionContext = createContext({});
 
 export const SubmissionProvider = ({children}) => {
     const [formContent, setFormContent] = useState('intention');
+    const [infoContent, setInfoContent] = useState('submissions');
     const [intention, setIntention] = useState('');
     const [cue1, setCue1] = useState('');
     const [cue2, setCue2] = useState('');
@@ -23,15 +24,17 @@ export const SubmissionProvider = ({children}) => {
         }
     }
 
-    const handleSubmitIntention = (e) => {
+    const handleSubmitIntention = (e, userId) => {
         e.preventDefault();
         
         let keys = [];
         let formData = {};
+        let authorId = parseInt(userId)
     
         if (formContent === 'intention') {
-            keys = ['intention', 'cue1', 'cue2', 'cue3'];
+            keys = ['authorId', 'intention', 'cue1', 'cue2', 'cue3'];
             formData = {
+                authorId,
                 intention,
                 cue1,
                 cue2,
@@ -44,19 +47,20 @@ export const SubmissionProvider = ({children}) => {
         e.target.reset();
     }
 
-    const handleSubmitThreeToOne = (e) => {
+    const handleSubmitThreeToOne = (e, userId) => {
         e.preventDefault();
         
         let keys = [];
         let formData = {};
     
         if (formContent === 'three-to-one') {
-            keys = ['worked1', 'worked2', 'worked3', 'improve1'];
+            keys = ['worked1', 'worked2', 'worked3', 'improve1', 'authorId'];
             formData = {
                 worked1,
                 worked2,
                 worked3,
                 improve1,
+                userId,
             };
         }
     
@@ -102,6 +106,8 @@ export const SubmissionProvider = ({children}) => {
         <SubmissionContext.Provider value={{
             formContent,
             setFormContent,
+            infoContent,
+            setInfoContent,
             intention,
             setIntention,
             cue1,
@@ -133,6 +139,8 @@ export const useSubmission = () => {
     return{
         formContent: context.formContent,
         setFormContent: context.setFormContent,
+        infoContent: context.infoContent,
+        setInfoContent: context.setInfoContent,
         intention: context.intention,
         setIntention: context.setIntention,
         cue1: context.cue1,

@@ -29,7 +29,25 @@ h4 { margin: 0px; }
     margin: 5px;
 }
 
+.data-byte {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.data-container {
+    width: 90%;
+    height: 100%;
+    border: 3px solid white;
+    margin: 5px;
+    padding: 5px;
+}
+
 .description { padding: 10px; }
+
+.headers {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
 
 .input-form {
     flex: 1;

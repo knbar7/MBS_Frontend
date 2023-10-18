@@ -7,6 +7,7 @@ export const NavBar = () => {
 
     const handleLogOut = () => {
         setUser();
+        localStorage.removeItem('token');
     };
 
     return(

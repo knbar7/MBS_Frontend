@@ -64,10 +64,10 @@ export const SubmissionHistory = () => {
                         threeToOneData.map((data) => (
                             <div className="data-byte" key={data.id}>
                                 <p>{format(new Date(data.createdAt), 'MM/dd/yyyy')}</p>
-                                <p>{data.intention}</p>
-                                <p>{data.cue1}</p>
-                                <p>{data.cue2}</p>
-                                <p>{data.cue3}</p>
+                                <p>{data.worked1}</p>
+                                <p>{data.worked2}</p>
+                                <p>{data.worked3}</p>
+                                <p>{data.improve1}</p>
                             </div>
                         ))
                     ) : (

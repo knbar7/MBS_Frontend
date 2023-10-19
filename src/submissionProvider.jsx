@@ -52,6 +52,7 @@ export const SubmissionProvider = ({children}) => {
         
         let keys = [];
         let formData = {};
+        let authorId = parseInt(userId)
     
         if (formContent === 'three-to-one') {
             keys = ['worked1', 'worked2', 'worked3', 'improve1', 'authorId'];
@@ -60,7 +61,7 @@ export const SubmissionProvider = ({children}) => {
                 worked2,
                 worked3,
                 improve1,
-                userId,
+                authorId,
             };
         }
     

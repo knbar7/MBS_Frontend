@@ -44,6 +44,14 @@ h4 { margin: 0px; }
 
 .description { padding: 10px; }
 
+.descriptions-container {
+    width: 90%;
+    height: 100%;
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+}
+
 .headers {
     display: grid;
     grid-template-columns: repeat(5, 1fr);

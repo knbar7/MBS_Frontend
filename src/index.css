@@ -52,10 +52,28 @@ h4 { margin: 0px; }
     text-align: center;
 }
 
+.error-message {
+    color: red;
+    font-size: 0.8rem;
+    position: absolute;
+    left: 25px;
+    bottom: -20px;
+}
+
+.form-item { 
+    width: 100%;
+    text-align: center;
+    position: relative;
+}
+
+.form-item input { width: 85%; }
+
 .headers {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
 }
+
+.hidden { display: none; }
 
 .input-form {
     flex: 1;

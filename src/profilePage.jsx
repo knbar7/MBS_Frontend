@@ -1,5 +1,6 @@
 import { useAuth } from "./authProvider";
 import { ClientProfile } from "./clientProfile";
+import { CoachProfile } from "./coachProfile";
 import "./index.css";
 import { NavBar } from "./navBar";
 

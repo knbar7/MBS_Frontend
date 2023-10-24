@@ -7,7 +7,7 @@ export const getUserFromDb = ({ email }) => {
       return response.json();
     })
     .then((users) => {
-        return users.find((user) => user.email === email)
+      return users.find((user) => user.email === email);
     })
     .then((user) => {
       if (!user) {

@@ -1,7 +1,3 @@
 export const CoachProfile = () => {
-    return(
-        <div className="coach-content">
-
-        </div>
-    )
-}
+  return <div className="coach-content"></div>;
+};

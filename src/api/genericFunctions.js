@@ -50,14 +50,12 @@ export const getData = async (dataType, userId) => {
 };
 
 export const getClientel = async (role, userId) => {
-  if(role !== 'coach'){
-    throw new Error("must be a coach")
+  if (role !== "coach") {
+    throw new Error("must be a coach");
   }
 
   try {
-    const response = await axios.get(
-      API_CONFIG.baseUrl + `/client/${userId}`,
-    );
+    const response = await axios.get(API_CONFIG.baseUrl + `/client/${userId}`);
 
     if (response.status === 200) {
       const data = response.data;
@@ -66,10 +64,10 @@ export const getClientel = async (role, userId) => {
     } else {
       console.error("Fetch failed");
     }
-   } catch(error) {
-      console.error("An error occurred:", error)
-    }
-}
+  } catch (error) {
+    console.error("An error occurred:", error);
+  }
+};
 
 // Generic post function
 export const handleSubmitGeneric = async (endpoint, keys, formData) => {

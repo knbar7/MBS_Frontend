@@ -1,27 +1,23 @@
 import { useEffect, useState } from "react";
 import { getData } from "./api/genericFunctions";
-import { useAuth } from "./authProvider";
-import { useSubmission } from "./submissionProvider";
 import { format } from "date-fns";
 
-export const SubmissionHistory = () => {
-  const { formContent } = useSubmission();
-  const { user } = useAuth();
+export const SubmissionHistory = ({ userId, formContent }) => {
   const [intentionData, setIntentionData] = useState([]);
   const [threeToOneData, setThreeToOneData] = useState([]);
 
   useEffect(() => {
     // Fetch intention data when the component mounts and whenever user or formContent changes
     if (formContent === "intention") {
-      getData("intention", user.id).then((data) => {
+      getData("intention", userId).then((data) => {
         setIntentionData(data);
       });
     } else {
-      getData("three-to-one", user.id).then((data) => {
+      getData("three-to-one", userId).then((data) => {
         setThreeToOneData(data);
       });
     }
-  }, [user.id, formContent, intentionData, threeToOneData]);
+  }, [userId, formContent, intentionData, threeToOneData]);
 
   return (
     <div className="data-container">

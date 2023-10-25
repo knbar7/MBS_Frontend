@@ -3,9 +3,11 @@ import { IntentionForm } from "./intentionForm";
 import { ThreeToOneForm } from "./threeToOneForm";
 import { useSubmission } from "./submissionProvider";
 import { SubmissionHistory } from "./submissionHistory";
+import { useAuth } from "./authProvider";
 
 export const ClientProfile = () => {
-  const { formContent, infoContent, setInfoContent } = useSubmission(); // Declare infoContent
+  const { formContent, infoContent, setInfoContent } = useSubmission();
+  const { user } = useAuth();
 
   const handleInfoContentClick = () => {
     if (infoContent === "descriptions") {
@@ -81,7 +83,7 @@ export const ClientProfile = () => {
             )}
           </div>
         ) : (
-          <SubmissionHistory />
+          <SubmissionHistory userId={user.id} formContent={formContent} />
         )}
       </div>
     </div>

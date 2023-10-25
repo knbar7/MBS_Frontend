@@ -20,7 +20,7 @@ h4 {
 
 .daily-items-container {
   width: 40%;
-  height: 80%;
+  max-height: 95%;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -31,12 +31,18 @@ h4 {
   margin: 5px;
 }
 
+.data-bits { 
+  overflow: scroll;
+  max-height: 90%;
+}
+
 .data-byte {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
 }
 
 .data-container {
+  position: relative;
   width: 90%;
   height: 100%;
   border: 3px solid white;
@@ -72,6 +78,15 @@ h4 {
 
 .form-item input {
   width: 85%;
+}
+
+.half-screen {
+  height: 40vh;
+  width: 100%;
+}
+
+.half-screen .client-content {
+  height: 40vh;
 }
 
 .headers {

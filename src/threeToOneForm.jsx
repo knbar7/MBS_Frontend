@@ -12,7 +12,7 @@ export const ThreeToOneForm = () => {
           <h4>Intention</h4>
         </div>
         <div className="selection-box unclickable-right">
-          <h4 className="hidden">Three-to-One</h4>
+          <h4>Three-to-One</h4>
         </div>
       </div>
       <h2>Three to One</h2>
